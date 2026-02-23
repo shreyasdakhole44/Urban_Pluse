@@ -1,19 +1,34 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #020617;
-  --color-neon-green: #22c55e;
-  --color-crisis-red: #ef4444;
+  /* Exact PMC Color Palette */
+  --color-pmc-blue: #0d47a1;
+  --color-pmc-blue-dark: #0a3d8a;
+  --color-pmc-saffron: #f57c00;
+  --color-pmc-orange: #ff9800;
+  --color-pmc-bg: #f5f5f5;
+  --color-pmc-text: #212121;
+  --color-pmc-border: #e0e0e0;
 
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: "Roboto", "Inter", system-ui, -apple-system, sans-serif;
+  --font-heading: "Roboto Condensed", sans-serif;
 }
 
 @layer base {
   body {
-    @apply bg-navy text-white selection:bg-neon-green/30;
+    @apply bg-white text-pmc-text selection:bg-pmc-blue/10;
     margin: 0;
     min-height: 100vh;
     overflow-x: hidden;
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-cond {
+    font-family: var(--font-heading);
   }
 
   ::-webkit-scrollbar {
@@ -21,42 +36,73 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-navy;
+    @apply bg-gray-100;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-neon-green/20 rounded-full hover:bg-neon-green/40 transition-colors;
+    @apply bg-pmc-blue/40 rounded-full hover:bg-pmc-blue/60 transition-colors;
   }
 }
 
-/* Custom Utilities for UrbanPulse - Tailwind v4 Syntax */
-@utility glass {
-  background-color: rgb(255 255 255 / 0.05);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgb(255 255 255 / 0.1);
-  border-radius: 1rem;
+/* Official Government Styles */
+@utility gov-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-@utility glass-card {
-  background-color: rgb(255 255 255 / 0.05);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgb(255 255 255 / 0.1);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+@utility gov-card {
+  @apply bg-white border border-pmc-border rounded shadow-sm transition-all duration-300;
+
+  &:hover {
+    @apply shadow-md border-pmc-blue/30 -translate-y-1;
+  }
 }
 
-/* Hover state using standard CSS since :hover in @utility name is invalid */
-.glass-card:hover {
-  border-color: rgb(34 197 94 / 0.3);
+@utility btn-pmc-blue {
+  @apply bg-pmc-blue text-white px-6 py-2 rounded font-bold uppercase tracking-wider text-xs transition-all hover:bg-pmc-blue-dark shadow-sm;
 }
 
-@utility neon-text {
-  color: var(--color-neon-green);
-  text-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+@utility btn-pmc-saffron {
+  @apply bg-pmc-saffron text-white px-6 py-2 rounded font-bold uppercase tracking-wider text-xs transition-all hover:bg-orange-700 shadow-sm;
 }
 
-@utility neon-border {
-  border-color: rgb(34 197 94 / 0.5);
-  box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+@utility marquee-container {
+  @apply w-full bg-pmc-blue text-white py-1.5 overflow-hidden whitespace-nowrap flex;
+}
+
+/* Animations found on official gov sites */
+@keyframes slide-infinite {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: slide-infinite 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Tab/Header specific styles */
+.header-top {
+  @apply bg-gray-100 text-[11px] py-1 border-b border-gray-200;
+}
+
+.header-main {
+  @apply bg-white py-4 md:py-6 border-b border-gray-200;
+}
+
+.header-nav {
+  @apply bg-pmc-blue text-white;
+}
+
+.section-title-mod {
+  @apply text-2xl font-black text-pmc-blue mb-6 pb-2 border-b-4 border-pmc-saffron inline-block;
 }

@@ -4,9 +4,11 @@ import { Float, MeshDistortMaterial, PerspectiveCamera, MeshWobbleMaterial } fro
 
 export default function WorkflowAnim() {
     const meshRef = useRef();
+    const timeRef = useRef(0);
 
-    useFrame((state) => {
-        const t = state.clock.getElapsedTime();
+    useFrame((state, delta) => {
+        timeRef.current += delta;
+        const t = timeRef.current;
         if (meshRef.current) {
             meshRef.current.rotation.x = Math.sin(t / 2) / 4;
             meshRef.current.rotation.y = Math.cos(t / 3) / 4;

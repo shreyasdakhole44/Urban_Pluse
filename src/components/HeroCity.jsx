@@ -35,8 +35,11 @@ const GridCity = () => {
 
 const Building = ({ position, scale, speed }) => {
     const ref = useRef();
-    useFrame((state) => {
-        const t = state.clock.getElapsedTime();
+    const timeRef = useRef(0);
+
+    useFrame((state, delta) => {
+        timeRef.current += delta;
+        const t = timeRef.current;
         if (ref.current) {
             ref.current.scale.y = scale[1] * (1 + Math.sin(t * speed) * 0.1);
             ref.current.position.y = (scale[1] * (1 + Math.sin(t * speed) * 0.1)) / 2;
@@ -63,9 +66,11 @@ const NeuralLines = ({ buildings }) => {
     }, [buildings]);
 
     const lineRefs = useRef([]);
+    const timeRef = useRef(0);
 
-    useFrame((state) => {
-        const t = state.clock.getElapsedTime();
+    useFrame((state, delta) => {
+        timeRef.current += delta;
+        const t = timeRef.current;
         lineRefs.current.forEach((ref, i) => {
             if (ref) {
                 ref.material.opacity = 0.2 + Math.sin(t * 2 + i) * 0.2;
