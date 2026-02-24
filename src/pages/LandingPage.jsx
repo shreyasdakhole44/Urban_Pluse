@@ -2,7 +2,10 @@ import React from 'react';
 import NewsTicker from '../components/NewsTicker';
 import TripleHeader from '../components/TripleHeader';
 import HeroSlider from '../sections/HeroSlider';
-import ServiceGrid from '../sections/ServiceGrid';
+import CircularServices from '../sections/CircularServices';
+import AppBanner from '../sections/AppBanner';
+import LatestUpdates from '../sections/LatestUpdates';
+import UrbanPulseForCitizen from '../sections/UrbanPulseForCitizen';
 import MayorMessage from '../sections/MayorMessage';
 import SmartCityPulse from '../sections/SmartCityPulse';
 import Footer from '../components/Footer';
@@ -14,8 +17,8 @@ const LandingPage = () => {
             {/* Scroll to Top Hidden Element */}
             <div id="top" className="absolute top-0"></div>
 
-            {/* Official PMC Header System */}
-            <header className="fixed top-0 left-0 w-full z-50">
+            {/* Official PMC-style Header System */}
+            <header className="fixed top-0 left-0 w-full z-50 shadow-sm">
                 <NewsTicker />
                 <TripleHeader />
             </header>
@@ -30,21 +33,28 @@ const LandingPage = () => {
         Total Header: ~214px
       */}
             <div className="pt-[160px] md:pt-[214px]">
-                {/* Dynamic Hero Slider */}
+                {/* Full-width Hero Banner Slider */}
                 <HeroSlider />
 
-                {/* Official Citizen Services Grid */}
-                <ServiceGrid />
+                {/* NEW: Circular Service Menu (As requested with Marathi labels) */}
+                <CircularServices />
+
+                {/* NEW: App Download and CSR Banners (As per screenshot 1) */}
+                <AppBanner />
+
+                {/* NEW: Standalone Latest Updates Section (Moved from slider side) */}
+                <LatestUpdates />
+
+                {/* NEW: Zoom-on-hover Citizen Initiative Section (Mirroring PMC for Punekar) */}
+                <UrbanPulseForCitizen />
 
                 {/* Leadership Message Section */}
                 <MayorMessage />
 
-                {/* Technology Showcase (Digital Twin) */}
+                {/* Technology Showcase (Digital Twin) - Matches UrbanPulse topic */}
                 <SmartCityPulse />
 
-                {/* Informational Sections could go here (Stats, News etc) */}
-
-                {/* Detailed Official Footer */}
+                {/* Formal Reference Footer (As per screenshot 2) */}
                 <Footer />
             </div>
 

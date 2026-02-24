@@ -106,3 +106,73 @@
 .section-title-mod {
   @apply text-2xl font-black text-pmc-blue mb-6 pb-2 border-b-4 border-pmc-saffron inline-block;
 }
+
+.section-title-mod::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--color-pmc-saffron);
+  border-radius: 2px;
+}
+
+/* Circular Menu Animations */
+@keyframes rotate-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-counter-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.rotateAnimationLeftTop {
+  position: absolute;
+  top: -150px;
+  left: -250px;
+  opacity: 0.08;
+  animation: rotate-clockwise 60s linear infinite;
+  pointer-events: none;
+  width: 600px;
+  height: 600px;
+}
+
+.rotateAnimationBottomRight {
+  position: absolute;
+  bottom: -150px;
+  right: -250px;
+  opacity: 0.08;
+  animation: rotate-counter-clockwise 60s linear infinite;
+  pointer-events: none;
+  width: 600px;
+  height: 600px;
+}
+
+.circular-menu-item {
+  @apply flex items-center gap-4 transition-all duration-300;
+}
+
+.circular-menu-item:hover {
+  @apply -translate-y-1;
+}
+
+.image-wrapper {
+  @apply w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center border-2 border-pmc-blue/10;
+}
+
+.circular-menu-item a {
+  @apply flex items-center gap-4 text-sm font-black text-gray-700 hover:text-pmc-blue no-underline;
+}

@@ -6,7 +6,7 @@ const AshaAgent = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
     const [isSpeaking, setIsSpeaking] = useState(false);
-    const [message, setMessage] = useState("Namaste! I am Asha, your PMC Digital Assistant. How can I guide you today?");
+    const [message, setMessage] = useState("Namaste! I am Asha, your UrbanPulse Digital Assistant. How can I guide you today?");
 
     const synth = window.speechSynthesis;
     const utteranceRef = useRef(null);
@@ -39,14 +39,14 @@ const AshaAgent = () => {
 
     return (
         <>
-            <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-4 font-sans">
+            <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 flex flex-col items-end gap-4 font-sans max-w-[calc(100vw-32px)]">
                 <AnimatePresence>
                     {isOpen && (
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="bg-white shadow-[0_20px_60px_rgba(0,0,0,0.2)] rounded-2xl w-80 mb-4 overflow-hidden border border-gray-100"
+                            className="bg-white shadow-[0_20px_60px_rgba(0,0,0,0.2)] rounded-2xl w-[280px] sm:w-80 mb-4 overflow-hidden border border-gray-100"
                         >
                             {/* Header */}
                             <div className="bg-pmc-blue p-5 flex justify-between items-center relative overflow-hidden">
@@ -54,8 +54,8 @@ const AshaAgent = () => {
                                 <div className="flex items-center gap-3 relative z-10">
                                     <div className="w-9 h-9 rounded-full bg-pmc-saffron flex items-center justify-center font-black text-white shadow-lg">A</div>
                                     <div>
-                                        <h4 className="font-black text-white text-sm">PMC आशा (Asha)</h4>
-                                        <p className="text-[10px] text-white/70 uppercase font-black tracking-widest">Digital Helpdesk</p>
+                                        <h4 className="font-black text-white text-sm">आशा (Asha)</h4>
+                                        <p className="text-[10px] text-white/70 uppercase font-black tracking-widest">UrbanPulse Helpdesk</p>
                                     </div>
                                 </div>
                                 <button onClick={() => setIsOpen(false)} className="text-white/70 hover:text-white transition-colors relative z-10">
